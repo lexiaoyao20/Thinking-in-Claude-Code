@@ -547,3 +547,8 @@ html:not(.js) {
         transition: none;
     }
 }
+
+/* Limit sidebar in-page TOC to h2 only, hide h3 and deeper */
+.sidebar ol.section ol.section {
+    display: none !important;
+}
