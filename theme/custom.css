@@ -239,6 +239,50 @@ html:not(.js) {
     font-size: 1.1rem;
 }
 
+.content main .table-wrapper {
+    margin: 1.3rem 0 1.7rem;
+}
+
+.content main table {
+    margin: 0;
+}
+
+.content main th,
+.content main td {
+    text-align: left;
+    vertical-align: top;
+}
+
+.sidebar .part-title {
+    margin: 1.1rem 0 0.45rem;
+    padding: 0.1rem 0.4rem;
+    color: var(--home-accent);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.sidebar .chapter li.chapter-item {
+    margin-block-start: 0.35rem;
+}
+
+.sidebar .chapter > li.chapter-item > .chapter-link-wrapper a {
+    padding-left: 0.85rem;
+}
+
+.sidebar .chapter ol {
+    margin: 0.2rem 0 0.5rem;
+    padding-inline-start: 1rem;
+}
+
+.sidebar .chapter ol .chapter-link-wrapper a {
+    padding-left: 1.55rem;
+}
+
+.sidebar .chapter ol ol .chapter-link-wrapper a {
+    padding-left: 2.15rem;
+}
+
 .home-stat span {
     color: var(--home-muted);
     font-size: 0.87rem;
