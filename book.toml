@@ -1,0 +1,36 @@
+[book]
+title = "Thinking in Claude Code"
+authors = ["bob"]
+description = "从 Claude Code 源码中提炼的工程思想"
+language = "zh-CN"
+src = "book"
+
+[build]
+build-dir = "_site"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/lexiaoyao20/Thinking-in-Claude-Code"
+edit-url-template = "https://github.com/lexiaoyao20/Thinking-in-Claude-Code/edit/main/{path}"
+site-url = "/Thinking-in-Claude-Code/"
+additional-css = ["theme/custom.css"]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.print]
+enable = true
+page-break = true
+
+[output.html.search]
+limit-results = 30
+use-boolean-and = true
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

@@ -1,142 +1,201 @@
-# 《Claude Code 源码编程思想》
+<div class="home-hero">
+<div class="home-hero-grid">
+<div class="home-hero-main">
+<p class="home-kicker">Thinking in Claude Code</p>
+<h1 class="home-title">
+<span class="home-title-line">《Claude Code</span>
+<span class="home-title-line">源码编程思想》</span>
+</h1>
+<p class="home-subtitle">从 50 万行 AI Agent 源码中提炼的工程哲学</p>
+<p class="home-lead">这不是用户手册，也不是逐文件注释。它把 Claude Code 当作一套已经长大的 AI Agent 系统来读，重点解释它为什么这样分层、怎样守住边界、以及哪些做法值得迁移到你自己的项目里。</p>
+<div class="home-ribbon">
+<span>书稿式阅读入口</span>
+<span>围绕真实源码组织</span>
+<span>适合工程师与架构师</span>
+</div>
+</div>
+<div>
+<div class="home-hero-spotlight">
+<p class="home-spotlight-label">为什么值得读</p>
+<h3>不是教你用命令，而是教你看懂一套 AI 系统怎么长大。</h3>
+<ul>
+<li>把工具、权限、上下文、多 Agent 协作放回真实工程</li>
+<li>每章都从"为什么这样设计"出发，而不是停在"这里有什么"</li>
+<li>最终收束成可以迁移到你自己项目里的模式和判断</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 
-> **Thinking in Claude Code: 从 50 万行 AI Agent 源码中提炼的工程哲学**
->
-> 对标 Bruce Eckel《Thinking in C++》——每章聚焦一个核心编程思想，从"为什么这样设计"出发。
+<div class="home-stats">
+<div class="home-stat">
+<strong>17 章正文</strong>
+<span>完整覆盖核心主题</span>
+</div>
+<div class="home-stat">
+<strong>50 万行+</strong>
+<span>分析对象：Claude Code 源码</span>
+</div>
+<div class="home-stat">
+<strong>2,010 文件</strong>
+<span>书中持续映射到真实目录</span>
+</div>
+<div class="home-stat">
+<strong>57 工具</strong>
+<span>工具、权限、并发都有落点</span>
+</div>
+</div>
 
----
+<div class="home-actions">
+<a class="home-action home-action--primary" href="00-preface.html">
+<strong>开始阅读</strong>
+<span>从前言进入，先建立整本书的问题意识和阅读方式。</span>
+</a>
+<a class="home-action" href="01-architecture.html">
+<strong>快速进入核心</strong>
+<span>直接从第 1 章开始，先看架构，再看循环和工具系统。</span>
+</a>
+<a class="home-action" href="appendix-a.html">
+<strong>按源码导航</strong>
+<span>如果你想边看边对照实现，先走附录的索引入口。</span>
+</a>
+<a class="home-action" href="https://github.com/lexiaoyao20/Thinking-in-Claude-Code">
+<strong>查看仓库</strong>
+<span>返回 GitHub，看书稿、源码和更新记录。</span>
+</a>
+</div>
 
-## 阅读指南
+<div class="home-section">
+<h2 class="home-section-title">先从哪读</h2>
+<p class="home-section-intro">如果你是第一次来，先别急着翻完整目录。按下面的入口进，会比直接硬啃整套源码轻松很多。</p>
+<div class="home-grid">
+<div class="home-card home-card--wide">
+<h3>最省时间的读法</h3>
+<p>按这个顺序读六章，就能抓住这套系统最有价值的部分：</p>
+<div class="home-path">
+<a class="home-chip" href="01-architecture.html">Ch1 架构全景</a>
+<a class="home-chip" href="03-agent-loop.html">Ch3 Agent 循环</a>
+<a class="home-chip" href="04-tool-system.html">Ch4 工具系统</a>
+<a class="home-chip" href="05-permissions.html">Ch5 权限模型</a>
+<a class="home-chip" href="10-multi-agent.html">Ch10 多 Agent</a>
+<a class="home-chip" href="17-philosophy.html">Ch17 编程哲学</a>
+</div>
+</div>
+<div class="home-card home-card--side">
+<h3>按你的关注点来读</h3>
+<ul>
+<li><strong>AI Agent 怎么跑起来</strong> → 第 3、4、5、10、12、13 章</li>
+<li><strong>终端产品怎么做复杂交互</strong> → 第 2、6、7、8 章</li>
+<li><strong>大系统怎么分层收口</strong> → 第 1、8、9、14、17 章</li>
+<li><strong>安全、约束和失控边界</strong> → 第 5、9、11、15 章</li>
+</ul>
+</div>
+</div>
+</div>
 
-### 快速路线（~150 页）
-适合有经验的工程师，快速获取核心设计思想：
-> [第 1 章](#第-1-章架构全景) → [第 3 章](#第-3-章agent-循环) → [第 4 章](#第-4-章工具系统) → [第 5 章](#第-5-章权限模型) → [第 10 章](#第-10-章多-agent-协作) → [第 17 章](#第-17-章编程哲学)
+<div class="home-section">
+<h2 class="home-section-title">全书结构</h2>
+<p class="home-section-intro">全书分五个部分，从架构到实践再到哲学，每一章都映射到真实源码。</p>
+<div class="home-grid">
+<div class="home-part">
+<p class="home-part-label">第一部分</p>
+<h3>基础架构</h3>
+<p>从整体分层到 Agent 循环，先建立对系统骨架的认知。</p>
+<ul>
+<li><a href="01-architecture.html">第 1 章：架构全景</a></li>
+<li><a href="02-lifecycle.html">第 2 章：启动与生命周期</a></li>
+<li><a href="03-agent-loop.html">第 3 章：Agent 循环</a></li>
+</ul>
+</div>
+<div class="home-part">
+<p class="home-part-label">第二部分</p>
+<h3>核心系统</h3>
+<p>工具、权限、流式、终端——Agent 系统的四个关键齿轮。</p>
+<ul>
+<li><a href="04-tool-system.html">第 4 章：工具系统</a></li>
+<li><a href="05-permissions.html">第 5 章：权限模型</a></li>
+<li><a href="06-streaming.html">第 6 章：流式架构</a></li>
+<li><a href="07-terminal-ui.html">第 7 章：终端 UI</a></li>
+</ul>
+</div>
+<div class="home-part">
+<p class="home-part-label">第三部分</p>
+<h3>工程实践</h3>
+<p>配置、韧性、多 Agent、扩展——从"能跑"到"能在生产环境跑"。</p>
+<ul>
+<li><a href="08-config.html">第 8 章：配置哲学</a></li>
+<li><a href="09-resilience.html">第 9 章：韧性设计</a></li>
+<li><a href="10-multi-agent.html">第 10 章：多 Agent 协作</a></li>
+<li><a href="11-extension.html">第 11 章：扩展机制</a></li>
+</ul>
+</div>
+<div class="home-part">
+<p class="home-part-label">第四部分</p>
+<h3>进阶主题</h3>
+<p>上下文、提示词、并发、可观测、测试——深入系统的细粒度设计。</p>
+<ul>
+<li><a href="12-context.html">第 12 章：上下文管理</a></li>
+<li><a href="13-prompt-engineering.html">第 13 章：提示词工程</a></li>
+<li><a href="14-concurrency.html">第 14 章：并发模型</a></li>
+<li><a href="15-observability.html">第 15 章：可观测性</a></li>
+<li><a href="16-testing.html">第 16 章：测试工程</a></li>
+</ul>
+</div>
+<div class="home-part">
+<p class="home-part-label">第五部分</p>
+<h3>总结</h3>
+<p>把前面所有章节收束为可迁移的工程判断和设计模式。</p>
+<ul>
+<li><a href="17-philosophy.html">第 17 章：编程哲学</a></li>
+</ul>
+</div>
+<div class="home-part">
+<p class="home-part-label">辅助阅读</p>
+<h3>附录与参考</h3>
+<p>源码导航速查和术语表，方便随时查阅。</p>
+<ul>
+<li><a href="appendix-a.html">附录 A：源码导航速查</a></li>
+<li><a href="glossary.html">术语表</a></li>
+</ul>
+</div>
+</div>
+</div>
 
-### 专题路线
-| 读者角色 | 推荐章节 |
-|---------|---------|
-| AI Agent 开发者 | 第 3、4、5、10、12、13 章 |
-| CLI 工具开发者 | 第 2、6、7、8 章 |
-| 系统架构师 | 第 1、8、9、14、17 章 |
-| 安全工程师 | 第 5、9、13、15 章 |
+<div class="home-section">
+<h2 class="home-section-title">适合谁读</h2>
+<div class="home-reader-list">
+<div class="home-reader-item">
+<strong>正在做 AI Agent、代码助手、自动化工作流的人</strong>
+<span>这本书里的分层、循环、权限、上下文管理全部来自真实系统</span>
+</div>
+<div class="home-reader-item">
+<strong>想看一套成熟终端产品怎么组织起来的人</strong>
+<span>从启动流程到流式渲染到多 Agent 并发，都有完整讲解</span>
+</div>
+<div class="home-reader-item">
+<strong>想研究大型 TypeScript 系统的边界和约束处理的人</strong>
+<span>权限模型、韧性设计、配置哲学都是从工程角度展开的</span>
+</div>
+<div class="home-reader-item">
+<strong>更关心"为什么这样设计"而不只关心"怎么使用"的人</strong>
+<span>每一章都优先回答 Why，然后才是 How</span>
+</div>
+</div>
+</div>
 
----
+<div class="home-section">
+<h2 class="home-section-title">关于本书</h2>
+<div class="home-meta">
+<span>源码版本：Claude Code v2.1.87</span>
+<span>TypeScript 5.8 + Bun + React 19 + Ink + Zod v4</span>
+<span>2,010 文件 / 512,000+ 行</span>
+<span>57 工具 / 93 命令 / 150 组件</span>
+</div>
+</div>
 
-## 目录
-
-### 前言
-- [前言：为什么要读一个 CLI 工具的源码](./00-preface.md)
-
-### 第一部分：基础架构
-
-#### 第 1 章：架构全景
-- [分层、边界与依赖方向](./01-architecture.md)
-- 核心思想：**让依赖方向永远指向稳定的一侧**
-- 关键词：五层架构、稳定依赖原则、安全失败默认值
-
-#### 第 2 章：启动与生命周期
-- [从 main.tsx 到第一个 Token](./02-lifecycle.md)
-- 核心思想：**启动是一场依赖注入仪式**
-- 关键词：preAction hook、多入口统一、Feature Flag 编译时消除
-
-#### 第 3 章：Agent 循环
-- [用 AsyncGenerator 编织思考链](./03-agent-loop.md)
-- 核心思想：**Agent 是无界循环，不是单次调用**
-- 关键词：AsyncGenerator、queryLoop 状态机、yield 语义、中断传播
-
-### 第二部分：核心系统
-
-#### 第 4 章：工具系统
-- [25 个方法的契约](./04-tool-system.md)
-- 核心思想：**接口宽度决定表达力，接口约束决定安全性**
-- 关键词：Tool 接口、buildTool() 工厂、Zod Schema、结果持久化
-
-#### 第 5 章：权限模型
-- [在能力与安全之间走钢丝](./05-permissions.md)
-- 核心思想：**安全不是开关，而是频谱**
-- 关键词：四层决策、权限规则 DSL、投机性分类器、三条路径
-
-#### 第 6 章：流式架构
-- [从第一个 byte 到最后一个 token](./06-streaming.md)
-- 核心思想：**数据应该"流过"系统，而不是"存在"系统里**
-- 关键词：三层流模型、StreamingToolExecutor、背压、工具批次分区
-
-#### 第 7 章：终端 UI
-- [在 80 列 24 行里构建现代界面](./07-terminal-ui.md)
-- 核心思想：**约束催生创造力**
-- 关键词：内嵌 Ink、React Reconciler、帧渲染、虚拟滚动
-
-### 第三部分：工程实践
-
-#### 第 8 章：配置哲学
-- [七层优先级的统一](./08-config.md)
-- 核心思想：**配置优先级反映信任层级**
-- 关键词：七层配置、合并策略、@include 指令、缓存一致性
-
-#### 第 9 章：韧性设计
-- [在不可靠的世界中保持优雅](./09-resilience.md)
-- 核心思想：**每一种故障都应该有一个故事**
-- 关键词：重试状态机、错误分类学、配置损坏恢复、TelemetrySafeError
-
-#### 第 10 章：多 Agent 协作
-- [从单体到群体智能](./10-multi-agent.md)
-- 核心思想：**用文件锁、邮箱和信号量在单机上实现分布式协调**
-- 关键词：递归 Agent、三种后端、文件基邮箱、AsyncLocalStorage
-
-#### 第 11 章：扩展机制
-- [开放而不失控](./11-extension.md)
-- 核心思想：**开放接口，封闭内核**
-- 关键词：四大扩展通道、Skills、MCP 动态工具、Hook 生命周期
-
-### 第四部分：进阶主题
-
-#### 第 12 章：上下文管理
-- [在有限窗口中维持无限对话](./12-context.md)
-- 核心思想：**在信息丢失不可避免时，丢失最不重要的信息**
-- 关键词：Compaction、Token 预算、提示词缓存稳定性
-
-#### 第 13 章：提示词工程
-- [用代码构建 AI 的认知框架](./13-prompt-engineering.md)
-- 核心思想：**提示词不是文本，而是架构——它用代码定义 AI Agent 的认知边界、行为契约和能力空间**
-- 关键词：Section Builder、静态/动态分界、缓存感知组装、五级覆盖优先级、工具描述契约
-
-#### 第 14 章：并发模型
-- [单线程世界中的多任务](./14-concurrency.md)
-- 核心思想：**正确的并发不需要线程，需要边界和所有权**
-- 关键词：工具并发策略、文件锁退避、Cron 调度器、消息队列
-
-#### 第 15 章：可观测性
-- [看见系统的内心](./15-observability.md)
-- 核心思想：**你不能优化你看不见的东西**
-- 关键词：三支柱、成本追踪、TelemetrySafeError、双层 Feature Flag
-
-#### 第 16 章：测试工程
-- [验证一个不确定性系统](./16-testing.md)
-- 核心思想：**测试约束而非输出**
-- 关键词：_forTesting 模式、Schema-as-Contract、测试隔离
-
-### 第五部分：总结
-
-#### 第 17 章：编程哲学
-- [从 Claude Code 中可迁移的设计模式](./17-philosophy.md)
-- 核心思想：**每个成熟系统都是设计模式的矿**
-- 模式集：AsyncGenerator-as-Pipeline, Permission-as-Spectrum, Prompt-as-Architecture, File-as-IPC, ...
-
-### 附录
-- [附录 A：源码导航速查](./appendix-a.md)
-- [术语表](./glossary.md)
-
----
-
-## 关于本书
-
-- **源码版本**：Claude Code v2.1.87
-- **技术栈**：TypeScript 5.8 + Bun + React 19 + Ink + Zod v4
-- **源码规模**：2,010 文件 / 512,000+ 行 / 57 工具 / 93 命令 / 150 组件
-
----
-
-## 章节依赖关系
+<div class="home-section">
+<h2 class="home-section-title">章节依赖关系</h2>
 
 ```mermaid
 graph TD
@@ -162,3 +221,5 @@ graph TD
     C10 --> C14["Ch14: 并发"]
     C1 --> C17["Ch17: 编程哲学"]
 ```
+
+</div>
