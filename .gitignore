@@ -4,3 +4,4 @@ cli
 cli-dev
 _site/
 .superpowers/
+.playwright-mcp/
