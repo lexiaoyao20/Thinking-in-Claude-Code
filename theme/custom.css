@@ -207,14 +207,14 @@ html:not(.js) {
 
 .content main h4 {
     margin: 1.6rem 0 0.7rem;
-    font-size: 1.18rem;
+    font-size: 1.24rem;
     line-height: 1.45;
 }
 
 .content main p,
 .content main li {
     color: var(--home-ink);
-    font-size: clamp(1.15rem, 1rem + 0.28vw, 1.24rem);
+    font-size: clamp(1.2rem, 1rem + 0.35vw, 1.32rem);
     line-height: 1.95;
 }
 
@@ -305,7 +305,7 @@ html:not(.js) {
     padding: 0;
     border: 0;
     background: transparent;
-    font-size: 1.05rem;
+    font-size: clamp(1.22rem, 1.08rem + 0.22vw, 1.3rem);
     line-height: 1.78;
 }
 
@@ -537,7 +537,7 @@ html:not(.js) {
     vertical-align: top;
     padding: 0.96rem 1.08rem;
     border-color: var(--home-border);
-    font-size: 1.08rem;
+    font-size: 1.14rem;
     line-height: 1.75;
 }
 
@@ -678,7 +678,7 @@ html:not(.js) {
     padding: 0.54rem 0.76rem;
     border-radius: 0.82rem;
     color: var(--home-muted);
-    font-size: 1.06rem;
+    font-size: 1.1rem;
     line-height: 1.55;
     transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
@@ -695,6 +695,15 @@ html:not(.js) {
     color: var(--home-accent-2);
     box-shadow: inset 0 0 0 1px var(--home-ring);
     font-weight: 600;
+}
+
+/* Scroll-spy: highlight the current section in sidebar TOC */
+.sidebar a.current-header,
+.sidebar a.current-header-visible {
+    background: var(--home-sidebar-active) !important;
+    color: var(--home-accent-2) !important;
+    font-weight: 600;
+    border-radius: 0.82rem;
 }
 
 .sidebar .chapter > li.chapter-item > .chapter-link-wrapper a {
@@ -1014,7 +1023,7 @@ html:not(.js) {
 
     .content main p,
     .content main li {
-        font-size: 1.1rem;
+        font-size: 1.14rem;
         line-height: 1.92;
     }
 

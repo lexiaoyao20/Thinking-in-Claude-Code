@@ -16,7 +16,7 @@ git-repository-url = "https://github.com/lexiaoyao20/Thinking-in-Claude-Code"
 edit-url-template = "https://github.com/lexiaoyao20/Thinking-in-Claude-Code/edit/main/{path}"
 site-url = "/Thinking-in-Claude-Code/"
 additional-css = ["theme/custom.css"]
-additional-js = ["mermaid.min.js", "mermaid-init.js"]
+additional-js = ["mermaid.min.js", "mermaid-init.js", "sidebar-highlight.js"]
 
 [output.html.fold]
 enable = true
